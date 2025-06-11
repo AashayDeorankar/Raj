@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorry Yashvi 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffe0ec, #ffd5f7);
+      overflow: hidden;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 90%;
+      width: 350px;
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    .modal-content h2 {
+      color: #ff69b4;
+    }
+
+    .modal-content p {
+      margin: 20px 0;
+      color: #444;
+    }
+
+    .modal-content button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .main-content {
+      display: none;
+      height: 100vh;
+      background: url('your-photo.jpg') no-repeat center center/cover;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 600px;
+      margin: 5% auto;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .card h1 {
+      color: #e91e63;
+      font-size: 1.8em;
+    }
+
+    .card p {
+      font-size: 1.1em;
+      color: #555;
+      margin: 12px 0;
+    }
+
+    .miss-text {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #d81b60;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    audio { display: none; }
+
+    .heart {
+      width: 20px; height: 20px;
+      position: absolute; top: -20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/833/833472.png') no-repeat center;
+      background-size: contain;
+      animation: fall 8s linear infinite;
+      opacity: 0.8; z-index: 0;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @media screen and (max-width: 600px) {
+      .card { padding: 15px; margin: 10% 10px; }
+      .card h1 { font-size: 1.5em; }
+    }
+
+    .download-link {
+      margin-top: 20px;
+      display: block;
+      color: #1976d2;
+      text-decoration: underline;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_9d5b9f8dc3.mp3?filename=beautiful-emotional-piano-ambient-background-music-10569.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Modal -->
+  <div class="modal" id="apologyModal">
+    <div class="modal-content">
+      <h2>Dear Yashvi 😔</h2>
+      <p>I truly apologize. Bas kar aur kitna din gussa rahegi
+        
+      </p>
+      <button onclick="acceptApology()">OK, I Forgive You 💗</button>
+      <button onclick="sayNo()">No 🙁</button>
+    </div>
+  </div>
+
+  <!-- Hearts -->
+  <div id="heartsContainer"></div>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainPage">
+    <div class="card">
+      <h1>I’m Really Sorry, Yashvi 💞</h1>
+      <p>Thank you for forgiving me. You're not just my sister, you're my forever friend.</p>
+      <p class="miss-text">I miss gossiping with you 💬💕</p>
+      <p style="margin-top: 20px; font-weight: bold; color: #4a148c;">Forever your brother 💙</p>
+      <a class="download-link" href="index.html" download="sorry_yashvi.html">Download this page</a>
+    </div>
+  </div>
+
+  <script>
+    function acceptApology() {
+      document.getElementById('apologyModal').style.display = 'none';
+      document.getElementById('mainPage').style.display = 'block';
+    }
+
+    function sayNo() {
+      const modalContent = document.querySelector('.modal-content');
+      modalContent.innerHTML = `
+        <h2>🥺 Please...</h2>
+        <p>I know I hurt you, but you're everything to me. Can we not be okay again?</p>
+        <button onclick="acceptApology()">Okay... I Forgive You 💖</button>
+      `;
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
